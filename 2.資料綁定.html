@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>資料綁定v-bind</title>
+</head>
+<body>
+    <div id="app">
+        <h6 :class="colorClassName">{{ name }}</h6>
+        <h6 :style="{
+            'background-color': colorHash
+        }">{{ age }}</h6>
+        <a :href="likeURL">好朋友</a>
+        <img :src="fakeimg" alt="fake img">
+
+        <!-- 保持好習慣將陣列中加入唯一值給key，讓此陣列渲染節省成本 -->
+        <button v-for="(pageitem, pageIndex) in menu" :key="pageIndex">
+            {{pageIndex + 1}}. {{pageitem}}
+        </button>
+        <p v-for="(infoitem, infoKey, infoIndex) in info" :key="infoKey">
+            {{infoIndex + 1}}. {{infoKey}} : {{infoitem}}
+        </p>
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+        // 新增一個應用application→建立Vue實體(instance)，並掛載(mount)在網頁結點上
+        Vue.createApp({
+            data(){
+                return {
+                    name: 'Ingrid',
+                    age: 35,
+                    likeURL: 'https://chat.openai.com/',
+                    fakeimg: 'https://fakeimg.pl/100/',
+                    colorClassName: 'green',
+                    colorHash: '#555',
+                    menu: ['最新消息','最新消息','園區介紹','牧場體驗','常見問題'],
+                    info: {
+                        title: 'VueJs課程',
+                        author: '🐢'
+                    }
+                }
+            }
+        }).mount('#app')
+    </script>
+</body>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    #app{
+        width: 100%;
+        height: 100vh;
+        background-color: rgb(191, 168, 139);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .green{
+        color: green;
+    }
+    .red{
+        color: red;
+    }
+</style>
+</html>

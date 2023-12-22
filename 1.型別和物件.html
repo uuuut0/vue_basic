@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>型別和物件複習+創建vue實體</title>
+</head>
+<body>
+    <script>
+        // 基本型別
+        var name = 'Alice';   // string
+        var age = 25;         // int
+        var height = 5.8;     // float
+        var isStudent = true; // boolean
+        var job;              // undefined
+        var score = null;     // null
+
+        // 物件型別
+        var person = {
+            name: 'Bob',
+            greet: function() {
+                return `Hello, my name is ${this.name}.`;
+            },
+            talk(age) { //引述
+                return `I'm ${age} years old.`; 
+            }
+        };
+        var numbers = [1, 2, 3, 4, 5];
+        // for (var i = 0; i < numbers.length; i++) {
+        //     console.log(numbers[i]);
+        // }
+    </script>
+
+    <!-- 以下vue開始 -->
+    <div id="app">
+        {{ say }}
+        {{ age }}
+        <button v-for="(pageitem, index) in menu">
+            {{index + 1}}. {{pageitem}}
+        </button>
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+        // 新增一個應用application→建立Vue實體(instance)，並掛載(mount)在網頁結點上
+        Vue.createApp({
+            data(){
+                return {
+                    say: 'Hello',
+                    age: 35,
+                    menu: ['最新消息','最新消息','園區介紹','牧場體驗','常見問題'],
+                    info: {
+                        title: 'VueJs課程',
+                        author: '🐢'
+                    }
+                }
+            }
+        }).mount('#app')
+    </script>
+</body>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    #app{
+        width: 100%;
+        height: 100vh;
+        background-color: rgb(191, 168, 139);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+</html>
