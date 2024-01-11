@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>資料雙向綁定v-model</title>
+</head>
+<body>
+    <input type="text" id="account"/>
+    <p id="accountName"></p>
+    <br>
+    <script>
+        // 獲取input元素
+        var accountInput = document.getElementById('account');
+        // 獲取p元素
+        var accountNameParagraph = document.getElementById('accountName');
+        accountInput.addEventListener('input', function() {
+            // 獲取 input 元素的值
+            var accountValue = accountInput.value;
+            // 寫入 p元素
+            accountNameParagraph.textContent = accountValue;
+        });
+    </script>
+
+    <div id="app">
+        <!-- 單向綁定 -->
+        <input type="text" id="user1" @input="handleUser"/>
+        <p>{{userName1}}</p>
+        <br>
+        <!-- 雙向綁定 -->
+        <input type="text" id="user2" v-model="userName2"/>
+        <p>{{userName2}}</p>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        Vue.createApp({
+            data(){
+                return {
+                    userName1:'', 
+                    userName2:''
+                }
+            },
+            methods: {
+                handleUser(e){
+                    this.userName1 = e.target.value
+                }
+            }
+        }).mount('#app')
+    </script>
+</body>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+</style>
+</html>

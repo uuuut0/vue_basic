@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>計算屬性computed</title>
+</head>
+<body>
+    <div id="app">
+        <div>🍔：{{hamburger}}個</div>
+        <div>🥩：{{ beefStatus }}</div>
+        <div v-if="closeStore">關店囉</div>
+        
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        Vue.createApp({
+            data(){
+                return {
+                    cheese: 5,
+		            beef: 10
+                }
+            },
+            computed: { 
+                //寫法一：函式表達式(匿名函式)
+                hamburger() {
+                    const basicCount = this.beef/2
+                    return this.cheese > basicCount ? basicCount : this.cheese
+                },
+                beefStatus() {
+                    return this.beef === 0? '沒有肉了': '可供應'
+                },
+                closeStore() {
+                    return this.hamburger === 0
+                }
+            }
+        }).mount('#app')
+    </script>
+</body>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+</style>
+</html>

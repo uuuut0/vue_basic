@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件處理v-on和函式methods</title>
+</head>
+<body>
+    <div id="app">
+        <!-- <button @click="toggle = !toggle">開關</button> -->
+        <button @click="toggleHandle">開關</button>
+        <div v-show="toggle">on</div>
+        <div v-show="!toggle">off</div>
+        <button @click="scrollTop">scrollTop</button>
+
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        Vue.createApp({
+            data(){
+                return {
+                    toggle: true
+                }
+            },
+            methods: {
+                toggleHandle(){
+                    this.toggle = !this.toggle
+                },
+                scrollTop(){
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth' // 平滑滚动效果，如果瀏覽器支援的话
+                    });
+                }
+            },
+        }).mount('#app')
+    </script>
+</body>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+    #app > div{
+        width: 100vw;
+        height: 200vh;
+        font-size: 2rem;
+        margin: .25rem;
+        background-color: #ddd;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    button{
+        padding: 1rem 2rem;
+    }
+</style>
+</html>
