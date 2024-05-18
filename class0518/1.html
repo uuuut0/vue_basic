@@ -7,5 +7,30 @@
 </head>
 <body>
     
+    <div id="app">
+        <h1>!!!{{name}}!!!!</h1>
+        <p v-text="article"></p>
+        <p v-text="skills.f2e[0]"></p>
+        <p>{{boo?'boo':'oob'}} </p>
+        <div v-html='content'></div>
+    </div>
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    name: 'Article Title ',
+                    article: 'fkwaegpkpwkpkwpegkpkpkqwegpkqpwkgppwegkwepkwpekgpwkevwgleqpwkgpwgpkwpegkpwkeg',
+                    boo: false,
+                    skills: {
+                        f2e:['vue','js'],
+                        b2e:['php','backidfa']
+                    },
+                    content: '<h1>HOOOOOOLLLLLAAA</h1>'
+                }
+            }
+        })
+        app.mount('#app')
+    </script>
 </body>
 </html>
