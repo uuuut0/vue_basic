@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p{
+            text-align: center;
+            background-color: #e19f9f;
+            padding: 10px 0;
+            font-size: 24px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <p>{{res}}</p>
+        <button @click="add">+</button>
+        {{res}}
+        <button @click="minus">-</button>
+        <hr>
+        總價：　{{parse()}}
+    </div>
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+        Vue.createApp({
+            data(){
+                return{
+                    res:0,
+                    count:10,
+                    total:0
+                }
+            }
+            ,methods: {
+                add(){
+                    if(this.res >=100) return
+                    this.res +=this.count
+                },
+                minus(){
+                    if(this.res <=0) return
+                    this.res -=this.count
+                },
+                parse(){
+                    console.log('afa');
+                    return total = 100*this.res
+                    // this.total = 100*res
+                }
+            }
+        }).mount('#app')
+
+    </script>
+</body>
+</html>
