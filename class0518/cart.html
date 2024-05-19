@@ -34,7 +34,8 @@
 <body>
     <div id="app">
 
-        <div class="order" v-for="(cartItem,cartIndex) in cartList">
+        <div class="order" v-for="(cartItem,cartIndex) in cartList"
+        :key="cartItem['id']">
             <img :src=cartItem['imgsrc']>
             <div class="orderTitle">
                 <h3>{{cartItem['title']}}</h3>
