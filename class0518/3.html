@@ -21,7 +21,7 @@
         {{res}}
         <button @click="minus">-</button>
         <hr>
-        總價：　{{parse()}}
+        總價：  {{dollar}}
     </div>
     <script src="https://unpkg.com/vue"></script>
     <script>
@@ -46,6 +46,13 @@
                     console.log('afa');
                     return total = 100*this.res
                     // this.total = 100*res
+                }
+            },
+            computed: {
+                dollar(){
+                    
+                    return total = 100*this.res
+
                 }
             }
         }).mount('#app')

@@ -10,6 +10,7 @@
             gap: 10px;
             width: 100%;
             align-items: center;
+            
             margin: 10px 0;
         }
         .order img{
@@ -18,13 +19,12 @@
         }
         .orderTitle{
             padding: 0 20px;
+            width: 100px;
         }
         .orderCount span{
             margin: 0 20px;
         }
-        .orderList{
 
-        }
         button{
             background-color: #d8c5c5;
             border: none;
@@ -50,7 +50,8 @@
             <div class="removeBtn"><button id="removeBtn">X</button></div>
         </div>
         <div class="totlaDisplay">
-            $ {{total}}
+            Total : $ {{total}},<br>
+            in USD: $ {{totalCal}}
         </div>
         <!-- <div class="orderList">
             <div class="order">
@@ -95,8 +96,8 @@
                         {
                             id:1,
                             imgsrc:'images/pingu.image.jfif',
-                            title: 'donut',
-                            subtitle: 'okokoks',
+                            title: 'Donut',
+                            subtitle: 'Very sweet',
                             price: 300,
                             count: 1,
                             // totalPrice: 10000
@@ -104,8 +105,8 @@
                         {
                             id:2,
                             imgsrc:'images/pingu.image.jfif',
-                            title: 'bak',
-                            subtitle: 'okokoks',
+                            title: 'Tomato',
+                            subtitle: 'Very red',
                             price: 200,
                             count: 1,
                             // totalPrice: 10000
@@ -119,6 +120,16 @@
                     let price = 0
                     for(let i=0;i<this.cartList.length;i++){
                         price+= this.cartList[i]['count']*this.cartList[i]['price']
+                        console.log(price,i)
+                    }
+                    return price
+                },
+                totalCal(){
+                    let price = 0
+
+                    let rate=30
+                    for(let i=0;i<this.cartList.length;i++){
+                        price+= this.cartList[i]['count']*this.cartList[i]['price']*rate
                         console.log(price,i)
                     }
                     return price
