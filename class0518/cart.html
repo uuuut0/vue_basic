@@ -49,7 +49,9 @@
             </div>
             <div class="removeBtn"><button id="removeBtn">X</button></div>
         </div>
-
+        <div class="totlaDisplay">
+            $ {{total}}
+        </div>
         <!-- <div class="orderList">
             <div class="order">
                 <img :src=cartList[0]['imgsrc']>
@@ -96,7 +98,7 @@
                             title: 'donut',
                             subtitle: 'okokoks',
                             price: 300,
-                            count: 12,
+                            count: 1,
                             // totalPrice: 10000
                         },
                         {
@@ -105,10 +107,21 @@
                             title: 'bak',
                             subtitle: 'okokoks',
                             price: 200,
-                            count: 11,
+                            count: 1,
                             // totalPrice: 10000
                         }
                     ]
+                }
+            }
+            ,computed:{
+                total(){
+
+                    let price = 0
+                    for(let i=0;i<this.cartList.length;i++){
+                        price+= this.cartList[i]['count']*this.cartList[i]['price']
+                        console.log(price,i)
+                    }
+                    return price
                 }
             }
             ,methods: {
