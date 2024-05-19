@@ -34,7 +34,22 @@
 <body>
     <div id="app">
 
-        <div class="orderList">
+        <div class="order" v-for="(cartItem,cartIndex) in cartList">
+            <img :src=cartList[cartIndex]['imgsrc']>
+            <div class="orderTitle">
+                <h3>{{cartList[cartIndex]['title']}}</h3>
+                <span class="orderTag">{{cartList[cartIndex]['subtitle']}}</span>
+                <div class="orderPrice">{{cartList[cartIndex]['price']}}</div>
+            </div>
+            <div class="orderCount">
+                <button id="minusBtn" @click="reduce(cartIndex)">-</button>
+                <span>{{cartList[cartIndex]['count']}}</span>
+                <button id="addBtn" @click="add(cartIndex)">+</button>
+            </div>
+            <div class="removeBtn"><button id="removeBtn">X</button></div>
+        </div>
+
+        <!-- <div class="orderList">
             <div class="order">
                 <img :src=cartList[0]['imgsrc']>
                 <div class="orderTitle">
@@ -66,7 +81,7 @@
             </div>
 
 
-        </div>
+        </div> -->
     </div>
     <script src="https://unpkg.com/vue"></script>
     <script>
