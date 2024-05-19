@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js</title>
+    <style>
+        .order{
+            display: flex;
+            gap: 10px;
+            width: 100%;
+            align-items: center;
+            margin: 10px 0;
+        }
+        .order img{
+            width: 150px;
+            height: 150px;
+        }
+        .orderTitle{
+            padding: 0 20px;
+        }
+        .orderCount span{
+            margin: 0 20px;
+        }
+        .orderList{
+
+        }
+        button{
+            background-color: #d8c5c5;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+
+        <div class="orderList">
+            <div class="order">
+                <img :src=cartList[0]['imgsrc']>
+                <div class="orderTitle">
+                    <h3>{{cartList[0]['title']}}</h3>
+                    <span class="orderTag">{{cartList[0]['subtitle']}}</span>
+                    <div class="orderPrice">{{cartList[0]['price']}}</div>
+                </div>
+                <div class="orderCount">
+                    <button id="minusBtn" @click="reduce(0)">-</button>
+                    <span>{{cartList[0]['count']}}</span>
+                    <button id="addBtn" @click="add(0)">+</button>
+                </div>
+                <div class="removeBtn"><button id="removeBtn">X</button></div>
+            </div>
+        <div class="orderList">
+            <div class="order">
+                <img :src=cartList[1]['imgsrc']>
+                <div class="orderTitle">
+                    <h3>{{cartList[1]['title']}}</h3>
+                    <span class="orderTag">{{cartList[1]['subtitle']}}</span>
+                    <div class="orderPrice">{{cartList[1]['price']}}</div>
+                </div>
+                <div class="orderCount">
+                    <button id="minusBtn" @click="reduce(1)">-</button>
+                    <span>{{cartList[1]['count']}}</span>
+                    <button id="addBtn" @click="add(1)">+</button>
+                </div>
+                <div class="removeBtn"><button id="removeBtn">X</button></div>
+            </div>
+
+
+        </div>
+    </div>
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+        Vue.createApp({
+            data(){
+                return{
+                    cartList: [
+                        {
+                            id:1,
+                            imgsrc:'images/pingu.image.jfif',
+                            title: 'donut',
+                            subtitle: 'okokoks',
+                            price: 300,
+                            count: 12,
+                            // totalPrice: 10000
+                        },
+                        {
+                            id:2,
+                            imgsrc:'images/pingu.image.jfif',
+                            title: 'bak',
+                            subtitle: 'okokoks',
+                            price: 200,
+                            count: 11,
+                            // totalPrice: 10000
+                        }
+                    ]
+                }
+            }
+            ,methods: {
+
+                add(index){
+                    this.cartList[index]['count']+=1
+                },
+                reduce(index){
+                    if(this.cartList[index]['count']==0)return
+                    this.cartList[index]['count']-=1
+                },
+                updateTotal(){
+                    this.cartList[0]['totalPrice']
+                }
+            }
+        }).mount('#app')
+
+    </script>
+</body>
+</html>

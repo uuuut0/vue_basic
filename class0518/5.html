@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js</title>
+    <style>
+        .box{
+            width: 2rem;
+            height: 2rem;
+            background-color: #4d5452;
+        }
+        .red{
+            background-color: #852b2b;
+        }
+        .orange{background-color: #854e2b;}
+        .yellow{background-color: #85842b;}
+        .green{
+            background-color: #2b8557;
+        }
+        .blue{
+            background-color: #2b5585;
+        }
+        .deepblue{
+            background-color: #332b85;
+        }
+        .purple{
+            background-color: #662b85;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="app">
+        {{tab}}
+        <button @click='console.log(colorIndex++%7)'>換色</button>
+        <div class="box" :class="colorList[colorIndex%7]" ></div>
+        <div class="box" :style="{backgroundColor: colorList[colorIndex%7]}"></div>
+
+        <div class="pingus">
+            <img src="images/pingu.image.jfif" :style="{
+                width: `${colorIndex%7*70}px`,
+            }">
+            <img src="images/pingu.image.jfif" :style="{
+                width: `${(7-colorIndex%7)*70}px`,
+            }">
+        </div>
+
+        <img src="images/pingu.image.jfif" @click="addW()" style="width: 40px;">
+            <div class="box" :style="{
+                width: `${wwidth*20}px`,
+                backgroundColor: bgcolor}"  ></div>
+    </div>
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+        Vue.createApp({
+            data(){
+                return{
+                    tab: true,
+                    colorIndex: 0,
+                    colorList: ['red','orange','yellow','green','blue','deepblue','purple'],
+                    wwidth: 2,
+                    bgcolor: '#777'
+                }
+            }
+            ,methods: {
+
+                addW(){
+                    if(this.wwidth ===9) this.wwidth=0
+                    this.wwidth++
+                    this.bgcolor=`#${this.wwidth}${this.wwidth}6`
+
+                }
+            }
+        }).mount('#app')
+
+    </script>
+</body>
+</html>
