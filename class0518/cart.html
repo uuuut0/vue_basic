@@ -35,15 +35,15 @@
     <div id="app">
 
         <div class="order" v-for="(cartItem,cartIndex) in cartList">
-            <img :src=cartList[cartIndex]['imgsrc']>
+            <img :src=cartItem['imgsrc']>
             <div class="orderTitle">
-                <h3>{{cartList[cartIndex]['title']}}</h3>
-                <span class="orderTag">{{cartList[cartIndex]['subtitle']}}</span>
-                <div class="orderPrice">{{cartList[cartIndex]['price']}}</div>
+                <h3>{{cartItem['title']}}</h3>
+                <span class="orderTag">{{cartItem['subtitle']}}</span>
+                <div class="orderPrice">{{cartItem['price']}}</div>
             </div>
             <div class="orderCount">
                 <button id="minusBtn" @click="reduce(cartIndex)">-</button>
-                <span>{{cartList[cartIndex]['count']}}</span>
+                <span>{{cartItem['count']}}</span>
                 <button id="addBtn" @click="add(cartIndex)">+</button>
             </div>
             <div class="removeBtn"><button id="removeBtn">X</button></div>
